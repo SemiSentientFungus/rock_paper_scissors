@@ -5,21 +5,33 @@ let computerScore = 0;
 //gameplay
 const rock = document.querySelector('#rock');
 rock.addEventListener('click', function() {
-    alertFunction('rock')
+    game('rock');
 });
 
 const paper = document.querySelector('#paper');
 paper.addEventListener('click', function() {
-    alertFunction('paper')
+    game('paper');
 });
 
 const scissors = document.querySelector('#scissors');
 scissors.addEventListener('click', function() {
-    alertFunction('scissors')
+    game('scissors');
 });
 
 //functions
 
-function alertFunction(selector) {
-    alert(selector);
+function computerSelect(){
+
+}
+
+function game(select){
+    if (select == 'rock'){
+        console.log('rock');
+    }
+    else if (select == 'paper'){
+        console.log("paper")
+    }
+    else{
+        console.log('scissors')
+    }
 }

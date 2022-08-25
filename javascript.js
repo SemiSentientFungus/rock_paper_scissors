@@ -9,10 +9,14 @@ rock.addEventListener('click', function() {
 });
 
 const paper = document.querySelector('#paper');
-paper.onclick = alertFunction;
+paper.addEventListener('click', function() {
+    alertFunction('paper')
+});
 
 const scissors = document.querySelector('#scissors');
-scissors.onclick = alertFunction;
+scissors.addEventListener('click', function() {
+    alertFunction('scissors')
+});
 
 //functions
 

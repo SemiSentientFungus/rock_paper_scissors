@@ -18,6 +18,7 @@ scissors.addEventListener('click', function() {
     game('scissors');
 });
 const div = document.querySelector('#results');
+div.setAttribute('style', 'white-space: pre;');
 
 //functions
 
@@ -39,42 +40,53 @@ function game(select){
     let computer = computerSelect();
     if (select == 'rock'){
         if (computer == 'rock'){
-            div.textContent = "Draw!";
+            div.textContent += "Draw!\r\n" ;
         }
         else if (computer == 'paper'){
             computerScore++;
-            div.textContent = `You lose :c, the computer's score is: ${computerScore}`;
+            div.textContent += `You lose :c, the computer's score is: ${computerScore}\r\n`;
         }
         else {
             playerScore++;
-            div.textContent = `You win! your score is: ${playerScore}`;
+            div.textContent += `You win! your score is: ${playerScore}\r\n`;
         }
     }
     else if (select == 'paper'){
         if (computer == 'rock'){
             playerScore++;
-            div.textContent = `You win! your score is: ${playerScore}`;
+            div.textContent += `You win! your score is: ${playerScore}\r\n`;
         }
         else if (computer == 'paper'){
-            console.log("draw!");
-            div.textContent = "Draw!";
+            div.textContent += "Draw!\r\n";
         }
         else {
             computerScore++;
-            div.textContent = `You lose :c, the computer's score is: ${computerScore}`;
+            div.textContent += `You lose :c, the computer's score is: ${computerScore}\r\n`;
         }
     }
     else{
         if (computer == 'rock'){
             computerScore++;
-            div.textContent = `You lose :c, the computer's score is: ${computerScore}`;
+            div.textContent += `You lose :c, the computer's score is: ${computerScore}\r\n`;
         }
         else if (computer == 'paper'){
             playerScore++;
-            div.textContent = `You win!, your score is: ${playerScore}`;
+            div.textContent += `You win!, your score is: ${playerScore}\r\n`;
         }
         else {
-            div.textContent = "Draw!";
+            div.textContent += "Draw!\r\n";
         }
+    }
+    if (playerScore == 5){
+        div.textContent += "You have won!!! \r\n";
+        rock.disabled = true;
+        paper.disabled = true;
+        scissors.disabled = true;
+    }
+    else if (computerScore ==5){
+        div.textContent += "You have lost :c\r\n";
+        rock.disabled = true;
+        paper.disabled = true;
+        scissors.disabled = true;
     }
 }

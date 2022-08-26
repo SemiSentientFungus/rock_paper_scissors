@@ -17,21 +17,64 @@ const scissors = document.querySelector('#scissors');
 scissors.addEventListener('click', function() {
     game('scissors');
 });
+const div = document.querySelector('#results');
 
 //functions
 
 function computerSelect(){
-
+    let num = Math.floor(Math.random()*3+1)
+    if (num == 1){
+        return "rock"
+    }
+    else if (num == 2){
+        return "paper"
+    }
+    else {
+        return "scissors"
+    }
 }
 
 function game(select){
+    
+    let computer = computerSelect();
     if (select == 'rock'){
-        console.log('rock');
+        if (computer == 'rock'){
+            div.textContent = "Draw!";
+        }
+        else if (computer == 'paper'){
+            computerScore++;
+            div.textContent = `You lose :c, the computer's score is: ${computerScore}`;
+        }
+        else {
+            playerScore++;
+            div.textContent = `You win! your score is: ${playerScore}`;
+        }
     }
     else if (select == 'paper'){
-        console.log("paper")
+        if (computer == 'rock'){
+            playerScore++;
+            div.textContent = `You win! your score is: ${playerScore}`;
+        }
+        else if (computer == 'paper'){
+            console.log("draw!");
+            div.textContent = "Draw!";
+        }
+        else {
+            computerScore++;
+            div.textContent = `You lose :c, the computer's score is: ${computerScore}`;
+        }
     }
     else{
-        console.log('scissors')
+        if (computer == 'rock'){
+            computerScore++;
+            div.textContent = `You lose :c, the computer's score is: ${computerScore}`;
+        }
+        else if (computer == 'paper'){
+            playerScore++;
+            div.textContent = `You win!, your score is: ${playerScore}`;
+        }
+        else {
+            div.textContent = "Draw!";
+        }
     }
 }
